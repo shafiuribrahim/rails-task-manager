@@ -1,0 +1,18 @@
+<h1>Welcome to the Task Manager</h1>
+
+<% @tasks.each do |task| %>
+  <h3><%= link_to task.title, task_path(task) %></h3>
+  <p><%= task.details %></p>
+  <% if task.completed %>
+         <input type="checkbox" checked onclick="return false"/>
+         <% else %>
+         <input type="checkbox" onclick="return false"/>
+  <% end %>
+  <p><%= link_to "Edit", edit_task_path(task.id)%></p>
+  <p> <%= link_to "Delete this task?", task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <hr>
+<% end %>
+
+<%= link_to "Add a new task", new_task_path %>
+
+
